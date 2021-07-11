@@ -74,11 +74,11 @@ class LoginView extends StatelessWidget {
           child: TextField(
             keyboardType: TextInputType.emailAddress,
             decoration: InputDecoration(
-                icon: Icon(Icons.email_outlined, color: Colors.orange),
-                hintText: 'ejemplo@correo.com',
-                labelText: 'Correo electrónico',
-                counterText: snapshot.data,
-                errorText: snapshot.error),
+              icon: Icon(Icons.email_outlined, color: Colors.orange),
+              hintText: 'ejemplo@correo.com',
+              labelText: 'Correo electrónico',
+              errorText: snapshot.error,
+            ),
             onChanged: bloc.changeEmail,
           ),
         );
@@ -97,7 +97,6 @@ class LoginView extends StatelessWidget {
             decoration: InputDecoration(
                 icon: Icon(Icons.vpn_key_outlined, color: Colors.orange),
                 labelText: 'Contraseña',
-                counterText: snapshot.data,
                 errorText: snapshot.error),
             onChanged: bloc.changePassword,
           ),
