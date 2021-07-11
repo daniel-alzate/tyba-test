@@ -3,9 +3,11 @@ import 'package:tyba_test_daniel/src/models/restaurant_model.dart';
 
 class RestaurantSuggestionItem extends StatelessWidget {
   final RestaurantModel restaurant;
+  final Function onTap;
 
   const RestaurantSuggestionItem({
     @required this.restaurant,
+    this.onTap,
     Key key,
   }) : super(key: key);
 
@@ -26,16 +28,7 @@ class RestaurantSuggestionItem extends StatelessWidget {
       subtitle: Text(
         restaurant.score.toString(),
       ),
-      onTap: () {
-        Navigator.pushNamed(
-          context,
-
-//TODO: cuartas en fire base
-
-          '/detail',
-          arguments: restaurant,
-        );
-      },
+      onTap: onTap,
     );
   }
 }

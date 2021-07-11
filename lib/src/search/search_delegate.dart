@@ -71,7 +71,9 @@ class DataSearch extends SearchDelegate {
           return ListView(
             children: restaurant.map(
               (_restaurant) {
-                return RestaurantSuggestionItem(restaurant: _restaurant)
+                return RestaurantSuggestionItem(restaurant: _restaurant, onTap: () {
+                  restaurantProvider.saveTransaccions(_restaurant);
+                } ,)
                 ;
               },
             ).toList(),

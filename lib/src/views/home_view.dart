@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:tyba_test_daniel/src/models/restaurant_model.dart';
+import 'package:tyba_test_daniel/src/repositories/restaurant_repository.dart';
 import 'package:tyba_test_daniel/src/repositories/usuarios_repository.dart';
 import 'package:tyba_test_daniel/src/search/search_delegate.dart';
 import 'package:tyba_test_daniel/src/views/login_view.dart';
+import 'package:tyba_test_daniel/src/widgets/restaurant_card.dart';
 
 class HomeView extends StatefulWidget {
   @override
@@ -10,6 +13,7 @@ class HomeView extends StatefulWidget {
 
 class _HomeViewState extends State<HomeView> {
   final userRepository = new UserRepository();
+  final restaurantRepository = new RestaurantRepository();
 
   @override
   Widget build(BuildContext context) {
@@ -28,8 +32,27 @@ class _HomeViewState extends State<HomeView> {
           onPressed: () => _logout(context),
         ),
       ),
-      body: Text('el home'),
+      body: _crearListado(),
       floatingActionButton: _crearBoton(context),
+    );
+  }
+
+    Widget _crearListado() {
+    return FutureBuilder(
+      future: restaurantRepository.getTransaccions(),
+      builder: (BuildContext context,
+          AsyncSnapshot<List<RestaurantModel>> snapshot) {
+        if (snapshot.hasData) {
+          final restaurants = snapshot.data;
+          return ListView.builder(
+            itemCount: restaurants.length,
+            itemBuilder: (context, i) =>
+                RestaurantCard(restaurant: restaurants[i]),
+          );
+        } else {
+          return Center(child: CircularProgressIndicator());
+        }
+      },
     );
   }
 

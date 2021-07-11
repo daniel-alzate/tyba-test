@@ -47,11 +47,28 @@ class RestaurantRepository {
   }
 
   Future<void> saveTransaccions(RestaurantModel restauran) async {
-    final String _url = '$_baseFireUrl/restaurant.json';
+    final String _url = '$_baseFireUrl/restaurants.json';
 
     await http.post(
       _url,
       body: restaurantModelToJson(restauran),
     );
+  }
+
+    Future<List<RestaurantModel>> getTransaccions() async {
+
+    final String _url = '$_baseFireUrl/restaurants.json';
+
+    final response = await http.get(_url);
+    final Map<String, dynamic> decodeResponse = json.decode(response.body);
+    final List<RestaurantModel> _restaurants = new List();
+    if (decodeResponse == null) {
+      return [];
+    }
+    decodeResponse.forEach((id, _product) {
+      final _tempProduct = RestaurantModel.fromJson(_product);
+      _restaurants.add(_tempProduct);
+    });
+    return _restaurants;
   }
 }
