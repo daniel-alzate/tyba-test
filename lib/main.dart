@@ -6,6 +6,7 @@ import 'package:tyba_test_daniel/src/providers/preferences_provider.dart';
 import 'package:tyba_test_daniel/src/views/home_view.dart';
 import 'package:tyba_test_daniel/src/views/login_view.dart';
 import 'package:tyba_test_daniel/src/views/register_view.dart';
+import 'package:tyba_test_daniel/src/views/restaurant_view.dart';
 
 
 void main() async {
@@ -29,6 +30,7 @@ class MyApp extends StatelessWidget {
           'login': (BuildContext context) => LoginView(),
           'register': (BuildContext context) => RegisterView(),
           'home': (BuildContext context) => HomeView(),
+          'locationRestaurant': (BuildContext context) => RestaurantByLocationView()
         },
         theme: ThemeData(
           primaryColor: Colors.orange,

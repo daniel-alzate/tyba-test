@@ -4,7 +4,8 @@ import 'package:http/http.dart' as http;
 import 'package:tyba_test_daniel/src/models/restaurant_model.dart';
 
 class RestaurantRepository {
-  // final String _url = 'https://tyba-test-daniel-default-rtdb.firebaseio.com';
+  final String _baseFireUrl =
+      'https://tyba-test-daniel-default-rtdb.firebaseio.com';
 
   Future<List<RestaurantModel>> getRestauransByQuery(String query) async {
     final String _url =
@@ -43,5 +44,14 @@ class RestaurantRepository {
     });
 
     return restaurants;
+  }
+
+  Future<void> saveTransaccions(RestaurantModel restauran) async {
+    final String _url = '$_baseFireUrl/restaurant.json';
+
+    await http.post(
+      _url,
+      body: restaurantModelToJson(restauran),
+    );
   }
 }

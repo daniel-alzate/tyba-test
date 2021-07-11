@@ -12,16 +12,14 @@ class RestaurantSuggestionItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ListTile(
-      leading:FadeInImage(
-          image: NetworkImage(
-            'https://via.placeholder.com/200x300'
-          ),
-          placeholder: AssetImage(
-            'assets/no-image.png',
-          ),
-          width: 50,
-          fit: BoxFit.contain,
+      leading: FadeInImage(
+        image: NetworkImage('https://via.placeholder.com/200x300'),
+        placeholder: AssetImage(
+          'assets/no-image.png',
         ),
+        width: 50,
+        fit: BoxFit.contain,
+      ),
       title: Text(
         restaurant.name,
       ),
@@ -32,7 +30,7 @@ class RestaurantSuggestionItem extends StatelessWidget {
         Navigator.pushNamed(
           context,
 
-//TODO:
+//TODO: cuartas en fire base
 
           '/detail',
           arguments: restaurant,

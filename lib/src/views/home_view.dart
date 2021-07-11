@@ -35,8 +35,9 @@ class _HomeViewState extends State<HomeView> {
 
   Widget _crearBoton(BuildContext context) {
     return FloatingActionButton(
+      backgroundColor: Colors.orange,
       child: Icon(Icons.location_on),
-      onPressed: () => {},
+      onPressed: () => Navigator.pushNamed(context, 'locationRestaurant'),
     );
   }
 
