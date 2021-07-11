@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:tyba_test_daniel/src/repositories/usuarios_repository.dart';
+import 'package:tyba_test_daniel/src/views/login_view.dart';
 
 class HomeView extends StatefulWidget {
   @override
@@ -6,13 +8,17 @@ class HomeView extends StatefulWidget {
 }
 
 class _HomeViewState extends State<HomeView> {
+  final userRepository = new UserRepository();
 
   @override
   Widget build(BuildContext context) {
-
     return Scaffold(
       appBar: AppBar(
         title: Text('Restaurantes'),
+        leading: IconButton(
+          icon: Icon(Icons.logout),
+          onPressed: () => _logout(context),
+        ),
       ),
       body: Text('el home'),
       floatingActionButton: _crearBoton(context),
@@ -24,5 +30,15 @@ class _HomeViewState extends State<HomeView> {
       child: Icon(Icons.location_on),
       onPressed: () => {},
     );
+  }
+
+  void _logout(BuildContext context) {
+    userRepository.logout();
+    Navigator.pushAndRemoveUntil(
+        context,
+        MaterialPageRoute(
+          builder: (BuildContext context) => LoginView(),
+        ),
+        (route) => false);
   }
 }

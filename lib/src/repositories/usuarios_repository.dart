@@ -48,4 +48,8 @@ class UserRepository {
       return {'ok': false, 'message': decodedResp['error']['message']};
     }
   }
+
+  void logout (){
+    _prefs.token = null;
+  }
 }
