@@ -19,7 +19,7 @@ class _HomeViewState extends State<HomeView> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Restaurantes'),
+        title: Text('Bienvenido'),
         actions: [
           IconButton(
             icon: Icon(Icons.search),
@@ -32,7 +32,7 @@ class _HomeViewState extends State<HomeView> {
           onPressed: () => _logout(context),
         ),
       ),
-      body: _crearListado(),
+      body: Column(children: [Padding(padding: EdgeInsets.only(top: 25), child: Text('Ultimas consultas', style: TextStyle(fontSize: 20),) ,) , SizedBox(child: _crearListado(),height: 700, )  ],) ,
       floatingActionButton: _crearBoton(context),
     );
   }

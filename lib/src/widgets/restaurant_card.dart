@@ -21,7 +21,7 @@ class RestaurantCard extends StatelessWidget {
             child: FadeInImage(
               placeholder: AssetImage('assets/no-image.png'),
               image: NetworkImage('https://via.placeholder.com/200x300'),
-              height: 150,
+              height: 100,
             ),
           ),
           SizedBox(width: 20.0),

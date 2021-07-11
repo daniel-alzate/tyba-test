@@ -3,10 +3,10 @@ import 'package:location/location.dart';
 import 'package:tyba_test_daniel/src/repositories/restaurant_repository.dart';
 import 'package:tyba_test_daniel/src/widgets/restaurant_card.dart';
 
-
 class RestaurantByLocationView extends StatefulWidget {
   @override
-  _RestaurantByLocationViewState createState() => _RestaurantByLocationViewState();
+  _RestaurantByLocationViewState createState() =>
+      _RestaurantByLocationViewState();
 }
 
 class _RestaurantByLocationViewState extends State<RestaurantByLocationView> {
@@ -46,18 +46,12 @@ class _RestaurantByLocationViewState extends State<RestaurantByLocationView> {
     return Scaffold(
       appBar: AppBar(
         title: Text('Restaurantes cercanos'),
-        actions: [
-          IconButton(
-              icon: Icon(Icons.gps_fixed),
-              onPressed: () async {
-                await getDeviceLocation();
-                setState(() {});
-              })
-        ],
       ),
-      body: Padding(
-        padding: EdgeInsets.all(15.0),
-        child: _buidLocation(),
+      body: Center(
+        child: Padding(
+          padding: EdgeInsets.only(top: 15.0),
+          child: _buidLocation(),
+        ),
       ),
     );
   }
@@ -82,6 +76,21 @@ class _RestaurantByLocationViewState extends State<RestaurantByLocationView> {
               }
             },
           )
-        : Text('no gps data');
+        : _crearBoton();
+  }
+
+  Widget _crearBoton() {
+    return RaisedButton(
+        child: Container(
+          child: Text('Presiona para consultar restaurantes cercanos', style: TextStyle(),),
+        ),
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(5.0)),
+        elevation: 0.0,
+        color: Colors.orange,
+        textColor: Colors.white,
+        onPressed: () async {
+          await getDeviceLocation();
+          setState(() {});
+        });
   }
 }
