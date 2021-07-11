@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:tyba_test_daniel/src/repositories/usuarios_repository.dart';
+import 'package:tyba_test_daniel/src/search/search_delegate.dart';
 import 'package:tyba_test_daniel/src/views/login_view.dart';
 
 class HomeView extends StatefulWidget {
@@ -15,6 +16,13 @@ class _HomeViewState extends State<HomeView> {
     return Scaffold(
       appBar: AppBar(
         title: Text('Restaurantes'),
+        actions: [
+          IconButton(
+            icon: Icon(Icons.search),
+            onPressed: () =>
+                showSearch(context: context, delegate: DataSearch()),
+          ),
+        ],
         leading: IconButton(
           icon: Icon(Icons.logout),
           onPressed: () => _logout(context),
