@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:tyba_test_daniel/src/views/login_view.dart';
+import 'package:tyba_test_daniel/src/views/register_view.dart';
 
 void main()  {
   runApp(MyApp());
@@ -14,7 +15,8 @@ class MyApp extends StatelessWidget {
         title: 'Hot Food',
         initialRoute: 'login',
         routes: {
-          'login': (BuildContext context) => LoginView()
+          'login': (BuildContext context) => LoginView(),
+          'register': (BuildContext context) => RegisterView(),
         },
         theme: ThemeData(
           primaryColor: Colors.orange,
