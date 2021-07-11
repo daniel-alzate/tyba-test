@@ -1,10 +1,10 @@
 import 'dart:convert';
-
 import 'package:http/http.dart' as http;
 import 'package:tyba_test_daniel/src/providers/preferences_provider.dart';
+import 'package:tyba_test_daniel/src/config/endpoints.dart';
+
 
 class UserRepository {
-  final _apiKey = 'AIzaSyAs587JTuZwRhZC4ZHqdVwLhxPSK85910o';
   final _prefs = PreferencesProvider();
 
   Future<Map<String, dynamic>> login(String email, String password) async {
@@ -15,7 +15,7 @@ class UserRepository {
     };
 
     final resp = await http.post(
-        'https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=$_apiKey',
+        '$fireBaseAuth/accounts:signInWithPassword?key=$fireBaseApiKey',
         body: json.encode(authData));
 
     Map<String, dynamic> decodedResp = json.decode(resp.body);
@@ -36,7 +36,7 @@ class UserRepository {
     };
 
     final resp = await http.post(
-        'https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=$_apiKey',
+        '$fireBaseAuth/accounts:signUp?key=$fireBaseApiKey',
         body: json.encode(authData));
 
     Map<String, dynamic> decodedResp = json.decode(resp.body);

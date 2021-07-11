@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:tyba_test_daniel/src/bloc/provider.dart';
 import 'package:tyba_test_daniel/src/repositories/usuarios_repository.dart';
+import 'package:tyba_test_daniel/src/search/widgets/email_input.dart';
+import 'package:tyba_test_daniel/src/search/widgets/password_input.dart';
 import 'package:tyba_test_daniel/src/utils/utils.dart';
 
 class LoginView extends StatelessWidget {
@@ -46,9 +48,9 @@ class LoginView extends StatelessWidget {
               children: <Widget>[
                 Text('Ingreso', style: TextStyle(fontSize: 20.0)),
                 SizedBox(height: 60.0),
-                _crearEmail(bloc),
+                EmailInput(bloc: bloc),
                 SizedBox(height: 30.0),
-                _crearPassword(bloc),
+                PasswordInput(bloc: bloc),
                 SizedBox(height: 30.0),
                 _crearBoton(bloc)
               ],
@@ -64,47 +66,6 @@ class LoginView extends StatelessWidget {
       ),
     );
   }
-
-  Widget _crearEmail(LoginBloc bloc) {
-    return StreamBuilder(
-      stream: bloc.emailStream,
-      builder: (BuildContext context, AsyncSnapshot snapshot) {
-        return Container(
-          padding: EdgeInsets.symmetric(horizontal: 20.0),
-          child: TextField(
-            keyboardType: TextInputType.emailAddress,
-            decoration: InputDecoration(
-              icon: Icon(Icons.email_outlined, color: Colors.orange),
-              hintText: 'ejemplo@correo.com',
-              labelText: 'Correo electrónico',
-              errorText: snapshot.error,
-            ),
-            onChanged: bloc.changeEmail,
-          ),
-        );
-      },
-    );
-  }
-
-  Widget _crearPassword(LoginBloc bloc) {
-    return StreamBuilder(
-      stream: bloc.passwordStream,
-      builder: (BuildContext context, AsyncSnapshot snapshot) {
-        return Container(
-          padding: EdgeInsets.symmetric(horizontal: 20.0),
-          child: TextField(
-            obscureText: true,
-            decoration: InputDecoration(
-                icon: Icon(Icons.vpn_key_outlined, color: Colors.orange),
-                labelText: 'Contraseña',
-                errorText: snapshot.error),
-            onChanged: bloc.changePassword,
-          ),
-        );
-      },
-    );
-  }
-
   Widget _crearBoton(LoginBloc bloc) {
     return StreamBuilder(
       stream: bloc.formValidStream,
@@ -135,7 +96,7 @@ class LoginView extends StatelessWidget {
         message: info['message'],
       );
     }
-  }
+  }  
 
   Widget _crearFondo(BuildContext context) {
     final size = MediaQuery.of(context).size;
