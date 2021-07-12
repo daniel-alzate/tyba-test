@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:tyba_test_daniel/src/bloc/provider.dart';
 import 'package:tyba_test_daniel/src/repositories/usuarios_repository.dart';
-import 'package:tyba_test_daniel/src/search/widgets/email_input.dart';
-import 'package:tyba_test_daniel/src/search/widgets/password_input.dart';
+import 'package:tyba_test_daniel/src/widgets/email_input.dart';
+import 'package:tyba_test_daniel/src/widgets/password_input.dart';
 import 'package:tyba_test_daniel/src/utils/utils.dart';
 
 class LoginView extends StatelessWidget {

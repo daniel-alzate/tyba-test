@@ -1,6 +1,6 @@
 # tyba_test_daniel
 
-Hot Food es una aplicación que permite registro e inicio de sesión. Consultar una lista de restaurantes por el texto del campo, obtiene los restaurantes cercano con la geolocalizacion del dispositivo. Ademas guarda y consulta los restaurantes previamente consultados.
+Hot Food es una aplicación realizada en flutter que permite registro e inicio de sesión, Consulta de lista de restaurantes por el texto del campo, obtiener restaurantes cercano con la geolocalizacion del dispositivo y aemas guarda y consulta los restaurantes previamente consultados.
 
 ## Screenshots
 <div style="display:flex;flex-direction:row;justify-content: space-between">
@@ -15,7 +15,13 @@ Hot Food es una aplicación que permite registro e inicio de sesión. Consultar 
 
 ## Para iniciar el proyecto.
 
-Este proyecto es un punto de partida para una aplicación Flutter.
+Las siguientes instrucciones le proporcionarán una copia ejecutable del proyecto con fines de prueba.
+
+- Clona el repositorio: git clone https://github.com/daniel-alzate/tyba-test.git
+
+- Entrar a la carpeta del proyecto: Flutter pub get
+
+- Conectar dispositico o desplegar simulador: flutter run
 
 Algunos recursos para comenzar si este es su primer proyecto de Flutter
 
